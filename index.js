@@ -1,0 +1,1 @@
+console.log('Egorka gamati treba')
