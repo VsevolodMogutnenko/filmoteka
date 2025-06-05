@@ -1,4 +1,4 @@
-// // const arr = [1, 2, 3]
+// // // const arr = [1, 2, 3]
 // // const arr1 = arr
 // // const obj = {key: 'kovrik'}
 // // const function28 = () => {
@@ -55,26 +55,26 @@
 // console.log(b)
 // mahichFunc()
 
-function greetGuest (greeting, second) {
-  console.log(`${greeting},${this.username}, ${second}`)
-}
+// function greetGuest (greeting, second) {
+//   console.log(${greeting},${this.username}, ${second})
+// }
 
-const mango = {
-  username: 'mogut',
-  // greetGuest(greeting) {
-  //   console.log(${greeting},${this.username})
-  // }
-  // greetGuest: (greeting) => {
-  //   console.log(${greeting},${this.username})
-  // }
-}
+// const mango = {
+//   username: 'mogut',
+//   // greetGuest(greeting) {
+//   //   console.log(${greeting},${this.username})
+//   // }
+//   // greetGuest: (greeting) => {
+//   //   console.log(${greeting},${this.username})
+//   // }
+// }
 
-const poli = {
-  username: 'verk',
-  // greetGuest(greeting) {
-  //   console.log(${greeting},${this.username})
-  // }
-}
+// const poli = {
+//   username: 'verk',
+//   // greetGuest(greeting) {
+//   //   console.log(${greeting},${this.username})
+//   // }
+// }
 
 // greetGuest.call(mango,'welcome')
 // greetGuest.call(poli,'welcome')
@@ -122,37 +122,59 @@ const poli = {
 // console.log(interval)
 // clearTimeout(interval)
 
-const isSuccess = true
-const promise = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    if(isSuccess) {
-      resolve('Success')
-    } else {
-      reject('error')
-    }
-  }, 2000)
-})
-promise.then((value) => {
-  console.log(value)
-}).catch((error) => {
-  console.log(error)
-}).finally(() => {
-  console.log('Finally')
-})
+// const isSuccess = true
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     if(isSuccess) {
+//       resolve('Success')
+//     } else {
+//       reject('error')
+//     }
+//   }, 2000)
+// })
+// promise.then((value) => {
+//   console.log(value)
+// }).catch((error) => {
+//   console.log(error)
+// }).finally(() => {
+//   console.log('Finally')
+// })
 
 // fetch('https://jsonplaceholder.typicode.com/users').then((value) => value.json()).then((value) => {console.log(value)}).catch((error) => {console.log(error.message)})
 
-
 const list = document.querySelector('.list')
+const modal_content = document.querySelector('.modal_content')
+
 const createMurkUp = (el) => {
   const murkUp = el.map((value) => {
-    return `<li class='list_item'>
-      <img src='./images/малина.jpg' class='list_img' alt='Ягода Малинка укуси меня пчела'>
-      <p class='list_name'>${value.name}</p>
-      <p class='list_email'>${value.email}</p>
-      <p class='list_website'>${value.website}</p>
+    return `<li class='list_item' data-id='${value.id}'>
+      <img src=${value.image} class='list_img' alt='Product' data-id='${value.id}'>
+      <h2 class='list_title' data-id='${value.id}'>${value.title}</h2>
+      <p class='list_price' data-id='${value.id}'>${value.price}</p>
+      <p class='list_rating' data-id='${value.id}'>${value.rating.rate}</p>
     </li>`
   }).join('')
   list.innerHTML = murkUp
 }
-fetch('https://jsonplaceholder.typicode.com/users').then((value) => value.json()).then((value) => {createMurkUp(value)}).catch((error) => {console.log(error.message)})
+fetch('https://fakestoreapi.com/products').then((value) => value.json()).then((value) => {createMurkUp(value)}).catch((error) => {console.log(error.message)})
+
+const createModalMurkUp = (el) => {
+  const murkUp = el.map((value) => {
+    return `
+      <img src=${value.image} class='list_img' alt='Product'>
+      <h2 class='list_title'>${value.title}</h2>
+      <div class='list_description'>
+        <p class='list_price'>${value.price}</p>
+        <p class='list_rating'>${value.rating.rate}</p>
+        <p class='list_rating'>${value.rating.count}</p>
+        <p class='list_category'>${value.category}</p>
+        <p class='list_description'>${value.description}</p>
+      </div>`
+  }).join('')
+  list.innerHTML = murkUp
+}
+
+list.addEventListener('click', (event) => {
+  console.log(event.target)
+})
+// fetch('https://fakestoreapi.com/products').then((value) => value.json()).then((value) => {console.log(value)}).catch((error) => {console.log(error.message)})
