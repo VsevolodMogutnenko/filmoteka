@@ -144,24 +144,26 @@
 
 const list = document.querySelector('.list')
 const modal_content = document.querySelector('.modal_content')
+const modal = document.querySelector('.modal')
 
 const createMurkUp = (el) => {
   const murkUp = el.map((value) => {
     return `<li class='list_item' data-id='${value.id}'>
       <img src=${value.image} class='list_img' alt='Product' data-id='${value.id}'>
-      <h2 class='list_title' data-id='${value.id}'>${value.title}</h2>
-      <p class='list_price' data-id='${value.id}'>${value.price}</p>
-      <p class='list_rating' data-id='${value.id}'>${value.rating.rate}</p>
+      <div class='list_info'>
+        <h2 class='list_title' data-id='${value.id}'>${value.title}</h2>
+        <p class='list_price' data-id='${value.id}'>${value.price}</p>
+        <p class='list_rating' data-id='${value.id}'>${value.rating.rate}</p>
+      </div>
     </li>`
   }).join('')
   list.innerHTML = murkUp
 }
 fetch('https://fakestoreapi.com/products').then((value) => value.json()).then((value) => {createMurkUp(value)}).catch((error) => {console.log(error.message)})
 
-const createModalMurkUp = (el) => {
-  const murkUp = el.map((value) => {
-    return `
-      <img src=${value.image} class='list_img' alt='Product'>
+const createModalMurkUp = (value) => {
+    const modalMurkUp = `
+      <img src=${value.image} class='list_modal-img' alt='Product'>
       <h2 class='list_title'>${value.title}</h2>
       <div class='list_description'>
         <p class='list_price'>${value.price}</p>
@@ -170,11 +172,11 @@ const createModalMurkUp = (el) => {
         <p class='list_category'>${value.category}</p>
         <p class='list_description'>${value.description}</p>
       </div>`
-  }).join('')
-  list.innerHTML = murkUp
+  modal_content.innerHTML = modalMurkUp
 }
 
 list.addEventListener('click', (event) => {
-  console.log(event.target)
+  fetch(`https://fakestoreapi.com/products/${event.target.dataset.id}`).then((value) => value.json()).then((value) => {createModalMurkUp(value)}).catch((error) => {console.log(error.message)})
+  modal.classList.remove('is-hidden')
 })
 // fetch('https://fakestoreapi.com/products').then((value) => value.json()).then((value) => {console.log(value)}).catch((error) => {console.log(error.message)})
