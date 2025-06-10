@@ -179,5 +179,5 @@ list.addEventListener('click', (event) => {
   fetch(`https://fakestoreapi.com/products/${event.target.dataset.id}`).then((value) => value.json()).then((value) => {createModalMurkUp(value)}).catch((error) => {console.log(error.message)})
   modal.classList.remove('is-hidden')
 })
+console.log('Kvas Egorka')
 // fetch('https://fakestoreapi.com/products').then((value) => value.json()).then((value) => {console.log(value)}).catch((error) => {console.log(error.message)})
-console.log('Sevasko pie kvasko')
