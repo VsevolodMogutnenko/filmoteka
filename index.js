@@ -180,4 +180,5 @@ list.addEventListener('click', (event) => {
   modal.classList.remove('is-hidden')
 })
 console.log('Kvas Egorka')
+console.log('Monomahich Vsevolod XVI')
 // fetch('https://fakestoreapi.com/products').then((value) => value.json()).then((value) => {console.log(value)}).catch((error) => {console.log(error.message)})
