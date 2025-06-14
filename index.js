@@ -145,6 +145,22 @@
 const list = document.querySelector('.list')
 const modal_content = document.querySelector('.modal_content')
 const modal = document.querySelector('.modal')
+const close = document.querySelector('.close')
+const backdropClose = (event) => {
+  if (event.target === event.currentTarget) {
+    modal.classList.add('is-hidden')
+  }
+  document.removeEventListener('keydown', keyClose)
+}
+const buttonClose = () => {
+  modal.classList.add('is-hidden')
+  document.removeEventListener('keydown', keyClose)
+}
+const keyClose = (event) => {
+  if (event.code === 'Escape') {
+    modal.classList.add('is-hidden')
+  }
+}
 
 const createMurkUp = (el) => {
   const murkUp = el.map((value) => {
@@ -184,7 +200,11 @@ const createModalMurkUp = (value) => {
 }
 
 list.addEventListener('click', (event) => {
+  if (!event.target.dataset.id) return
   fetch(`https://fakestoreapi.com/products/${event.target.dataset.id}`).then((value) => value.json()).then((value) => {createModalMurkUp(value)}).catch((error) => {console.log(error.message)})
   modal.classList.remove('is-hidden')
+  modal.addEventListener('click', backdropClose)
+  close.addEventListener('click', buttonClose)
+  document.addEventListener('keydown', keyClose)
 })
 // fetch('https://fakestoreapi.com/products').then((value) => value.json()).then((value) => {console.log(value)}).catch((error) => {console.log(error.message)})
