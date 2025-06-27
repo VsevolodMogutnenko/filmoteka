@@ -1,4 +1,6 @@
-
+body {
+    margin: 0;
+}
 
 content {
     width: 1200px;
@@ -6,16 +8,25 @@ content {
 
 .navigation_list {
     display: flex;
+    height: 60px;
     padding: 10px 20px;
     background-color: grey;
     align-items: center;
     justify-content: center;
     gap: 70px;
+    margin: 0;
+}
+
+.navigation_logo {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-right: 400px;
 }
 
 .navigation_item {
     list-style: none;
-    font-size: 26px;
+    font-size: 30px;
     font-weight: 400;
     transition: .3s;
 }
@@ -27,7 +38,8 @@ a {
 }
 
 .navigation_item:hover a {
-    color: red;
+    color: pink;
+    fill: pink;
     scale: 1.1;
 }
 
@@ -76,6 +88,49 @@ a {
     pointer-events: none;
     opacity: 0;
     visibility: hidden;
+}
+
+.footer_container {
+    height: 100px;
+    background-color: grey;
+    padding: 15px 10px;
+}
+
+.footer_link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.footer_link-a {
+    cursor: pointer;
+    transition: .3s;
+}
+
+.footer_link-a:hover {
+    color:pink; 
+}
+
+.footer_socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.footer_socials-item {
+    display: flex;
+    gap: 8px;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    
+    svg {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .modal {
