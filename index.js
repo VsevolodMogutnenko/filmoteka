@@ -142,23 +142,28 @@
 
 // fetch('https://jsonplaceholder.typicode.com/users').then((value) => value.json()).then((value) => {console.log(value)}).catch((error) => {console.log(error.message)})
 
+const body = document.querySelector('body')
 const list = document.querySelector('.list')
 const modal_content = document.querySelector('.modal_content')
 const modal = document.querySelector('.modal')
 const close = document.querySelector('.close')
+
 const backdropClose = (event) => {
   if (event.target === event.currentTarget) {
     modal.classList.add('is-hidden')
+    body.style.overflowY = ''
   }
   document.removeEventListener('keydown', keyClose)
 }
 const buttonClose = () => {
   modal.classList.add('is-hidden')
   document.removeEventListener('keydown', keyClose)
+  body.style.overflowY = ''
 }
 const keyClose = (event) => {
   if (event.code === 'Escape') {
     modal.classList.add('is-hidden')
+    body.style.overflowY = ''
   }
 }
 
@@ -189,6 +194,7 @@ const createModalMurkUp = (value) => {
     const modalMurkUp = `
       <img src=${value.image} class='list_modal-img' alt='Product'>
       <h2 class='list_title'>${value.title}</h2>
+      <button class='list_buy'>Add to cart</button>
       <div class='list_description'>
         <p class='list_price'>Price: ${value.price}</p>
         <p class='list_rating' style='color: ${color};'>Rating: <span>${value.rating.rate}</span></p>
@@ -197,6 +203,12 @@ const createModalMurkUp = (value) => {
         <p class='list_description'>${value.description}</p>
       </div>`
   modal_content.innerHTML = modalMurkUp
+  const buttonBuy = document.querySelector('.list_buy')
+
+  buttonBuy.addEventListener('click', () => {
+    const result = JSON.parse(localStorage.getItem('modal_data'))??[]
+    localStorage.setItem('modal_data', JSON.stringify([...result, {image:value.image, title:value.title, price:value.price}]))
+  })
 }
 
 list.addEventListener('click', (event) => {
@@ -206,5 +218,12 @@ list.addEventListener('click', (event) => {
   modal.addEventListener('click', backdropClose)
   close.addEventListener('click', buttonClose)
   document.addEventListener('keydown', keyClose)
+  body.style.overflowY = 'hidden'
+  // if (!modal.classList.contains('is-hidden')) {
+  //   const buttonBuy = document.querySelector('.list_buy')
+  //   console.log(buttonBuy)
+  // }
 })
+
+
 // fetch('https://fakestoreapi.com/products').then((value) => value.json()).then((value) => {console.log(value)}).catch((error) => {console.log(error.message)})

@@ -37,7 +37,7 @@ a {
     color: black;
 }
 
-.navigation_item:hover a {
+.navigation_item:hover a, .footer_socials-item:hover {
     color: pink;
     fill: pink;
     scale: 1.1;
@@ -82,6 +82,20 @@ a {
 .list_modal-img {
     max-height: 400px;
     max-width: 400px;
+}
+
+.list_buy {
+    font-size: 22px;
+    background-color: aquamarine;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    transition: .3s;
+}
+
+.list_buy:hover {
+    color: gray;
 }
 
 .is-hidden {
