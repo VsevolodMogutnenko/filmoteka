@@ -182,6 +182,8 @@ const createMurkUp = (el) => {
 }
 fetch('https://fakestoreapi.com/products').then((value) => value.json()).then((value) => {createMurkUp(value)}).catch((error) => {console.log(error.message)})
 
+let isDisabled = false
+
 const createModalMurkUp = (value) => {
     let color = ''
     if (value.rating.rate < 3) {
@@ -204,10 +206,19 @@ const createModalMurkUp = (value) => {
       </div>`
   modal_content.innerHTML = modalMurkUp
   const buttonBuy = document.querySelector('.list_buy')
+  buttonBuy.disabled = isDisabled
 
   buttonBuy.addEventListener('click', () => {
     const result = JSON.parse(localStorage.getItem('modal_data'))??[]
-    localStorage.setItem('modal_data', JSON.stringify([...result, {image:value.image, title:value.title, price:value.price}]))
+    const filteredResult = result.find((el) => {
+      return el.title === value.title
+    })
+    if(!filteredResult) {
+      isDisabled = true
+      localStorage.setItem('modal_data', JSON.stringify([...result, {image:value.image, title:value.title, price:value.price}]))
+    } else {
+      isDisabled = false
+    }
   })
 }
 
@@ -226,4 +237,10 @@ list.addEventListener('click', (event) => {
 })
 
 
+
+// const objArr = [{number: 2}, {name: 'Bob The Builder'}, {age: 12}]
+// const filteredArr = objArr.find((el) => {
+//   return el.name === 'Bill The Builder'
+// })
+// console.log(filteredArr)
 // fetch('https://fakestoreapi.com/products').then((value) => value.json()).then((value) => {console.log(value)}).catch((error) => {console.log(error.message)})
