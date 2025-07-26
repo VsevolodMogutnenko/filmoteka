@@ -1,6 +1,11 @@
 const item_list = document.querySelector('.cart_list')
-
+const clear = document.querySelector('.cart_clear')
 const result = JSON.parse(localStorage.getItem('modal_data'))??[]
+
+clear.addEventListener('click', () => {
+    localStorage.removeItem('modal_data')
+    window.location.reload()
+})
 
 const createMurkUp = (el) => {
     const murkUp = el.map(({image, price, title}) => {

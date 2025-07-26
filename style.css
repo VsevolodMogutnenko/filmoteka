@@ -84,9 +84,8 @@ a {
     max-width: 400px;
 }
 
-.list_buy {
+.list_buy, .cart_clear {
     font-size: 22px;
-    background-color: aquamarine;
     cursor: pointer;
     border: none;
     border-radius: 5px;
@@ -94,8 +93,22 @@ a {
     transition: .3s;
 }
 
+.list_buy {
+    background-color: aquamarine;
+}
+
 .list_buy:hover {
     color: gray;
+}
+
+.cart_clear {
+    position: absolute;
+    top: 200px;
+    left: 500px;
+}
+
+.cart_clear:hover {
+    background-color: red;
 }
 
 .about {
