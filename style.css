@@ -107,6 +107,14 @@ a {
     left: 500px;
 }
 
+.cart_remove {
+    width: 200px;
+}
+
+.cart_remove:hover {
+    background-color: red;
+}
+
 .cart_clear:hover {
     background-color: red;
 }
