@@ -215,7 +215,7 @@ const createModalMurkUp = (value) => {
     })
     if(!filteredResult) {
       isDisabled = true
-      localStorage.setItem('modal_data', JSON.stringify([...result, {image:value.image, title:value.title, price:value.price}]))
+      localStorage.setItem('modal_data', JSON.stringify([...result, {image:value.image, title:value.title, price:value.price, quantity:1}]))
     } else {
       isDisabled = false
     }

@@ -2,6 +2,10 @@ body {
     margin: 0;
 }
 
+p, button {
+    font-size: 24px;
+}
+
 content {
     width: 1200px;
 }
@@ -63,14 +67,12 @@ a {
     margin-top: 10px;
     padding: 15px;
     cursor: pointer;
-    transition: .3s;
     border-radius: 10px;
+    transition: .3s;
 }
 
 .list_item:hover {
-    scale: 1.1;
     border: 1px solid blue;
-    color: orange;
 }
 
 .list_img {
@@ -101,6 +103,39 @@ a {
     color: gray;
 }
 
+.list_buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    .list_count {
+        margin: 0;
+        border-radius: 15px;
+        border: 2px solid pink;
+        padding: 10px 14px;
+    }
+
+    button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        border-radius: 15px;
+        padding: 10px 14px;
+    }
+
+    button:hover {
+        background-color: lightgrey;
+    }
+
+    .list_add:active {
+        color: aquamarine;
+    }
+
+    .list_remove:active {
+        color: red;
+    }
+}
+
 .cart_clear {
     position: absolute;
     top: 200px;
@@ -109,6 +144,7 @@ a {
 
 .cart_remove {
     width: 200px;
+    cursor: pointer;
 }
 
 .cart_remove:hover {
