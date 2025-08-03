@@ -25,19 +25,7 @@ const createMurkUp = (el) => {
         </li>`
     }).join('')
     item_list.innerHTML = murkUp
-
-    // cart_remove.forEach((el) => {
-    //     el.addEventListener('click', (event) => {
-    //         const name = event.target.name
-    //         const result = JSON.parse(localStorage.getItem('modal_data'))??[]
-    //         const filteredArr2 = result.filter((el) => {
-    //             return el.title !== name
-    //         })
-    //         localStorage.setItem('modal_data', JSON.stringify([...filteredArr2]))
-    //         window.location.reload()
-    //     })
-    // })
-
+    
     item_list.addEventListener('click', (event) => {
         if (event.target.classList.contains('cart_remove')) {
             const name = event.target.name
