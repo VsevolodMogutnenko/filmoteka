@@ -206,6 +206,13 @@ const createModalMurkUp = (value) => {
       </div>`
   modal_content.innerHTML = modalMurkUp
   const buttonBuy = document.querySelector('.list_buy')
+  
+
+  const result = JSON.parse(localStorage.getItem('modal_data'))??[]
+  const filteredResult = result.find((el) => {
+    return el.title === value.title
+  })
+  isDisabled = filteredResult?true:false
   buttonBuy.disabled = isDisabled
 
   buttonBuy.addEventListener('click', () => {
@@ -213,6 +220,7 @@ const createModalMurkUp = (value) => {
     const filteredResult = result.find((el) => {
       return el.title === value.title
     })
+    console.log(filteredResult)
     if(!filteredResult) {
       isDisabled = true
       localStorage.setItem('modal_data', JSON.stringify([...result, {image:value.image, title:value.title, price:value.price, quantity:1}]))
