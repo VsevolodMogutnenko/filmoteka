@@ -1,4 +1,7 @@
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
 }
 
@@ -52,14 +55,18 @@ a {
 }
 
 .list {
+    /* width: 100%; */
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
     padding: 0;
 }
 
 .list_item {
+    height: 600px;
     display: flex;
     flex-direction: column;
     flex-basis: calc(100% / 4 - 15px);
@@ -155,12 +162,16 @@ a {
     background-color: red;
 }
 
-.about {
+main {
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    flex: 1;
     gap: 50px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
+    margin: 0 auto
 }
 
 .about_button {
