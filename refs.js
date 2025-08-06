@@ -1,0 +1,7 @@
+export const body = document.querySelector('body')
+export const list = document.querySelector('.list')
+export const modal_content = document.querySelector('.modal_content')
+export const modal = document.querySelector('.modal')
+export const close = document.querySelector('.close')
+export const item_list = document.querySelector('.cart_list')
+export const clear = document.querySelector('.cart_clear')

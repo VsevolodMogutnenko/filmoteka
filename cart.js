@@ -1,9 +1,8 @@
-const item_list = document.querySelector('.cart_list')
-const clear = document.querySelector('.cart_clear')
+import * as refs from './refs.js'
+
 const result = JSON.parse(localStorage.getItem('modal_data'))??[]
 
-
-clear.addEventListener('click', () => {
+refs.clear.addEventListener('click', () => {
     localStorage.removeItem('modal_data')
     window.location.reload()
 })
@@ -24,9 +23,9 @@ const createMurkUp = (el) => {
             <button class='cart_remove' name='${title}'>Remove</button>
         </li>`
     }).join('')
-    item_list.innerHTML = murkUp
+    refs.item_list.innerHTML = murkUp
     
-    item_list.addEventListener('click', (event) => {
+    refs.item_list.addEventListener('click', (event) => {
         if (event.target.classList.contains('cart_remove')) {
             const name = event.target.name
             const result = JSON.parse(localStorage.getItem('modal_data'))??[]

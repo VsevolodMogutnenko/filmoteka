@@ -1,3 +1,5 @@
+import {list, modal_content} from './refs.js'
+
 export const createMurkUp = (el) => {
   const murkUp = el.map((value) => {
     return `<li class='list_item' data-id='${value.id}'>
@@ -12,7 +14,7 @@ export const createMurkUp = (el) => {
   list.innerHTML = murkUp
 }
 
-export let isDisabled = false
+let isDisabled = false
 
 export const createModalMurkUp = (value) => {
     let color = ''
