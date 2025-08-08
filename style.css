@@ -144,6 +144,7 @@ a {
 }
 
 .cart_clear {
+    display: none;
     position: absolute;
     top: 200px;
     left: 500px;
@@ -162,6 +163,12 @@ a {
     background-color: red;
 }
 
+.cart_empty {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+}
+
 main {
     width: 100%;
     display: flex;
@@ -170,7 +177,6 @@ main {
     gap: 50px;
     justify-content: center;
     align-items: center;
-    /* margin-bottom: 50px; */
     margin: 0 auto
 }
 

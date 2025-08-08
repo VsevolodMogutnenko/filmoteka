@@ -2,6 +2,14 @@ import * as refs from './refs.js'
 
 const result = JSON.parse(localStorage.getItem('modal_data'))??[]
 
+if (result.length === 0) {
+    refs.clear.style.display = 'none'
+    refs.empty.style.display = 'block'
+} else {
+    refs.clear.style.display = 'block'
+    refs.empty.style.display = 'none'
+}
+
 refs.clear.addEventListener('click', () => {
     localStorage.removeItem('modal_data')
     window.location.reload()
